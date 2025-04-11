@@ -8,5 +8,8 @@ Deploying Virtual Machine and Configuring Inbound Security Rule The first step w
 
 To access the virtual machine over the internet, an inbound security rule for SSH which utilizes port 22 had to be created in the networking tab of the Virtual Machine. With Port 22 open, this enables us to access the VM over the internet using the Public IP.
 
+![image](https://github.com/user-attachments/assets/c6b308c6-46be-40c5-aad4-006684c4788d)
+
+
 
 
