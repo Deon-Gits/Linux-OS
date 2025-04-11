@@ -1,27 +1,17 @@
 #!/bin/bash
 
-echo "Checking running processes for user: $USER"
-echo "---------------------------------------"
+echo -n "Would you like to sort the processes output by memory or CPU? (m/c) "
+read sortby
+echo -n "How many results do you want to display? "
+read lines
 
-# Show all processes for current user
-ps aux | grep "^$USER" | grep -v grep
-
-echo "---------------------------------------"
-echo "How would you like to sort your processes?"
-echo "1) Memory Usage"
-echo "2) CPU Usage"
-read -p "Enter 1 or 2: " choice
-
-if [ "$choice" == "1" ]; then
-    echo "Sorting processes by Memory Usage..."
-    ps aux --sort=-%mem | grep "^$USER" | grep -v grep | head -15
-elif [ "$choice" == "2" ]; then
-    echo "Sorting processes by CPU Usage..."
-    ps aux --sort=-%cpu | grep "^$USER" | grep -v grep | head -15
+if [ "$sortby" = "m" ]
+then
+    ps aux --sort -rss | grep -i `whoami` | head -n "$lines"
+elif [ "$sortby" = "c" ]
+then
+    ps aux --sort -%cpu | grep -i `whoami` | head -n "$lines"
 else
-    echo "Invalid choice! Exiting."
-    exit 1
+    echo "No input provided. Exiting"
 fi
 
-echo "---------------------------------------"
-echo "Process check completed!"
