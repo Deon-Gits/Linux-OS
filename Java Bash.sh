@@ -1,25 +1,18 @@
 #!/bin/bash
 
-echo "Updating system packages..."
-sudo apt update -y
+apt update
+apt install -y default-jre
 
-echo "Installing required packages..."
-sudo apt install -y software-properties-common
+java_version=$(java -version 2>&1 > /dev/null  | grep "java version\|openjdk version" | awk '{print substr($3,2,2)}')
 
-echo "Adding OpenJDK repository..."
-sudo add-apt-repository -y ppa:openjdk-r/ppa
-
-echo "Updating package list..."
-sudo apt update -y
-
-echo "Installing latest OpenJDK..."
-sudo apt install -y openjdk-21-jdk
-
-echo "Checking Java installation..."
-if java -version > /dev/null 2>&1; then
-    echo "Java installed successfully!"
-    java -version
-else
-    echo "Java installation failed!"
-    exit 1
+if [ "$java_version" == "" ]
+then
+    echo Installing Java has failed. No java version found	
+elif [ "$java_version" == "1." ]
+then
+    echo An old version of Java installation found
+elif [ "$java_version" -ge 11 ]
+then
+    echo Java version 11 or greater installed successfully
 fi
+
