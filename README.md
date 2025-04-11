@@ -10,6 +10,12 @@ To access the virtual machine over the internet, an inbound security rule for SS
 
 ![image](https://github.com/user-attachments/assets/c6b308c6-46be-40c5-aad4-006684c4788d)
 
+-- Subsequently, I created a bash script to check for the latest version of java and install it simultaneously or otherwise return a message that states it is up to date.
+
+![image](https://github.com/user-attachments/assets/ac1896f8-3c3f-4751-863e-57f9c0abafa4)
+
+- Adding a bash script that checks all the processes running for the current user (USER env var) and prints out the processes in console. I used ps aux command and grep for the user. This can also ask for a user's input for sorting the processes output either by memory or CPU consumption, and print the sorted list.
+![image](https://github.com/user-attachments/assets/57c00839-410e-4812-a493-b492cc846aaf)
 
 
 
